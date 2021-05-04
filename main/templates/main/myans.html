@@ -1,0 +1,28 @@
+{% extends 'main/navbar.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container">
+	
+    <div class="row">
+        {% for ans in answers %}
+		
+            <div class="col-lg-4">
+                <div class="box-element product">
+                    {% if request.user.profile.role == 'Student' %}
+                        <h6> Answered  By : {{ans.askedto}} </h6>
+                    {% else %}
+                        <h6> Asked  By : {{ans.askedby}} </h6>
+                    
+                    {% endif  %}
+                    <hr>
+                    <h6><strong> <u>Q : </u> {{ ans.question}} </strong></h6>
+                    <hr>
+                    <h6><strong><u>A :</u> {{ ans.answer}} </strong></h6>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,24 @@
+{% extends 'main/navbar.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container">
+	<div class="row">
+		<h2> Find a Instructor and ask a Question</h2>
+	</div>
+    <div class="row">
+        {% for teacher in teachers %}
+		
+            <div class="col-lg-3">
+                <div class="box-element product">
+                    <h4><strong> {{ teacher.user.username}} </strong></h4>
+                    <h6> Expertise : {{ teacher.dept}} </h6>
+                    <hr>
+                    <a class="btn btn-outline-success" href="{% url  'createquestion' teacher.id %}">Ask a Question</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock content %}

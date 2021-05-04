@@ -1,0 +1,28 @@
+{% extends 'main/navbar.html' %}
+{% load static %}
+{% block content %}
+	<div class="row">
+		<form method="POST" action="">
+            {% csrf_token %} 
+            {{form.username.label}}
+            {{form.username}}
+            <br />
+            <br />
+            {{form.email.label}}
+            {{form.email}}
+            <br />
+            <br />
+            {{form.password1.label}}
+            {{form.password1}}
+            <br />
+            <br />
+        
+            {{form.password2.label}}
+            {{form.password2}}
+            <br />
+            <br />
+            <input type="submit"  name="SignUp">
+        </form>
+	</div>
+
+{% endblock content %}

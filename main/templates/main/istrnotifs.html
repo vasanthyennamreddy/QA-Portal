@@ -1,0 +1,33 @@
+{% extends 'main/navbar.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container">
+	<div class="row">
+		<h2> Questions asked to you</h2>
+	</div>
+    <div class="row">
+        {% for query in queries %}
+		
+            <div class="col-lg-4">
+                <div class="box-element product">
+                    <h6> Asked By : {{query.askedby}} </h6>
+                    <hr>
+                    <h6><strong> {{ query.question}} </strong></h6>
+                    <hr>
+                    <form method = "POST" action="{% url 'update_ques' query.id %}">
+                        <div class="form-group">
+                            {% csrf_token %}
+                            <label for="exampleFormControlTextarea1">Answer</label>
+                            <textarea  name = "answer" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                          </div>
+                          <input type="submit" name="SEND">
+                    </form>
+                </div>
+                
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock content %}

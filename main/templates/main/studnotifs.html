@@ -1,0 +1,36 @@
+{% extends 'main/navbar.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container">
+	<div class="row">
+		<h2> Answers for your Questions </h2>
+	</div>
+    <div class="row">
+        {% for ans in answers %}
+		
+            <div class="col-lg-4">
+                <div class="box-element product">
+                    <h6> Answered  By : {{ans.askedto}} </h6>
+                    <hr>
+                    <h6><strong><u>Q:</u> {{ ans.question}} </strong></h6>
+                    <hr>
+                    <h6><strong><u>Ans:</u> {{ ans.answer}} </strong></h6>
+                    <hr>
+                    <form action="{% url 'update_ques' ans.id %}" method="POST">
+                        {% csrf_token %}
+                        <div class="form-check">
+                            <label class="form-check-label">
+                              <input type="checkbox" class="form-check-input" name="read" value="True">Mark as Read
+                            </label>
+                            <input  style ="float: right;"type="submit" name="save" value="SAVE">
+                          </div>
+                       
+                    </form>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock content %}

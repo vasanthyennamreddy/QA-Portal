@@ -1,0 +1,26 @@
+{% extends 'main/navbar.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container">
+	<div class="row">
+		<h2> Questions asked by you</h2>
+	</div>
+    <div class="row">
+        {% for pques in pending_ques %}
+		
+            <div class="col-lg-4">
+                <div class="box-element product">
+                    <h6> Asked to : {{pques.askedto}} </h6>
+                    <hr>
+                    <h6><strong> <u>Q:</u> {{ pques.question}} </strong></h6>
+                    <hr>
+                    
+                </div>
+                
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock content %}
